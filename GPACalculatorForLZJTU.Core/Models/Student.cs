@@ -2,7 +2,7 @@
 {
     public class Student
     {
-        public Student(int id, string name, string majorName)
+        public Student(string id, string name, string majorName)
         {
             Id = id;
             Name = name
@@ -11,7 +11,7 @@
                 ?? throw new ArgumentNullException(nameof(majorName));
         }
 
-        public int Id { get; set; }
+        public string Id { get; set; }
         public string Name { get; set; }
         public string MajorName { get; set; }
         public double GradePointAverage { get; set; }
