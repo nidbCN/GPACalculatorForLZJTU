@@ -39,7 +39,7 @@ var result = rows.Skip(2)
         IsRetake = row.Cell(8).GetValue<int>() == 1
     })
     .Select(group => {
-        var student = new Student(group.Key, "", "")
+        var student = new Student("", group.Key, "")
         {
             GradePointAverage = group
             .Select(course => course.Sorce * course.Credit).Sum() / group.Sum(course => course.Credit)
@@ -50,5 +50,5 @@ var result = rows.Skip(2)
 
 foreach (var item in result)
 {
-    Console.WriteLine(item.ToString());
+    Console.WriteLine($"{item.Name}: \t{item.GradePointAverage:N2}");
 }
