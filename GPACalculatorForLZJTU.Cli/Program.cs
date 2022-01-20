@@ -29,7 +29,7 @@ var result = rows.Skip(2)
     .Where(row => majorList.Contains(row.Cell(13).GetString()))
     .Where(row => row.Cell(6).GetString() == "必修")
     .Where(row => row.Cell(8).GetValue<int>() == 0)
-    .GroupBy(row => row.Cell(1).GetString(),
+    .GroupBy(row => row.Cell(2).GetString(),
     row => new Course()
     {
         CourseName = row.Cell(3).GetString(),
@@ -46,7 +46,7 @@ var result = rows.Skip(2)
         };
         return student;
     })
-    .OrderBy(stu => stu.GradePointAverage);
+    .OrderByDescending(stu => stu.GradePointAverage);
 
 foreach (var item in result)
 {
