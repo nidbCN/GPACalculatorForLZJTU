@@ -19,7 +19,7 @@
 
         public override string ToString()
         {
-            return $"{Id} - {Name}";
+            return $"{Id} - {Name}: {GradePointAverage}";
         }
     }
 }

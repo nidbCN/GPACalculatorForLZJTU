@@ -8,11 +8,13 @@ Console.WriteLine("Read list.xlsx");
 var workBook = new XLWorkbook(fileName);
 var workSheet = workBook.Worksheet("Sheet1");
 
-var rows = workSheet.Rows(2, workSheet.RowCount() - 2);
+var rows = workSheet.RowsUsed();
+
+// var rows = workSheet.Rows(2);
 
 var majorList = new [] { "车辆工程", "车辆工程(詹)", "车辆工程（卓越计划班）"};
 
-var result = rows.GroupBy(stu => new Student(
+var result = rows.Skip(2).GroupBy(stu => new Student(
         stu.Cell(1).GetValue<int>(), stu.Cell(2).GetString(), stu.Cell(13).GetString()),
     row => new Course()
     {
@@ -35,5 +37,5 @@ var result = rows.GroupBy(stu => new Student(
 
 foreach (var item in result)
 {
-
+    Console.WriteLine(item.ToString());
 }
